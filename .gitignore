@@ -1,0 +1,67 @@
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Cobertura de pruebas
+coverage/
+*.lcov
+.nyc_output
+
+# Directorios de salida
+dist/
+build/
+out/
+
+# Cache
+.npm
+.eslintcache
+.parcel-cache
+
+# Archivos temporales
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# IDE/Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# AWS
+.aws/
+aws-exports.js
+
+# Configuraciones locales
+config/local.json
+local.config.js
+src/config.json

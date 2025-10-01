@@ -1,0 +1,39 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowDescribeEC2Instances",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus",
+        "ec2:DescribeTags"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowStopSpecificInstances",
+      "Effect": "Allow",
+      "Action": "ec2:StopInstances",
+      "Resource": [
+        "arn:aws:ec2:us-east-1:123456789012:instance/i-1234567890abcdef0",
+        "arn:aws:ec2:us-east-1:123456789012:instance/i-0987654321fedcba0"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    },
+    {
+      "Sid": "DenyTerminateInstances",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:TerminateInstances",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:DeleteVolume"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

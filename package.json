@@ -1,0 +1,20 @@
+{
+  "name": "ec2-shutdown-manager",
+  "version": "1.0.0",
+  "description": "Automated EC2 instance shutdown manager",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "stop-all": "node src/index.js --all",
+    "stop-instances": "node src/index.js --instances",
+    "status": "node src/index.js --status"
+  },
+  "keywords": ["aws", "ec2", "automation"],
+  "author": "FReptar0",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-ec2": "^3.600.0",
+    "dotenv": "^16.4.5"
+  }
+}
