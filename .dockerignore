@@ -1,0 +1,9 @@
+node_modules
+.env
+.git
+.gitignore
+.DS_Store
+*.log
+README.md
+iam-policy.json
+iam-policy-strict.json

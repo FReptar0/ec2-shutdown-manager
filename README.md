@@ -89,7 +89,57 @@ npm run stop-instances -- i-1234567890abcdef0
 
 ## Schedule with Cron (10 PM daily)
 
-### macOS/Linux
+### Option 1: Docker Container (Recommended)
+
+**1. Make sure you have a `.env` file with your AWS credentials**
+
+**2. Run the setup script:**
+
+```bash
+./docker-setup.sh
+```
+
+**3. Test the container:**
+
+```bash
+docker exec ec2-manager node /app/src/index.js --status
+```
+
+**4. Add cron job to your host machine:**
+
+```bash
+crontab -e
+```
+
+Add this line (runs at 10 PM daily):
+
+```bash
+0 22 * * * docker exec ec2-manager node /app/src/index.js >> /tmp/ec2-shutdown.log 2>&1
+```
+
+**5. Verify cron job:**
+
+```bash
+crontab -l
+```
+
+**Container management:**
+
+```bash
+# View logs
+docker logs ec2-manager
+
+# Stop container
+docker stop ec2-manager
+
+# Start container
+docker start ec2-manager
+
+# Restart container
+docker restart ec2-manager
+```
+
+### Option 2: Direct on macOS/Linux
 
 Edit crontab:
 
@@ -103,7 +153,7 @@ Add this line (replace path with your actual path):
 0 22 * * * cd /Users/freptar0/Desktop/Projects/ec2-shutdown-manager && /usr/local/bin/node src/index.js >> /tmp/ec2-shutdown.log 2>&1
 ```
 
-### Windows Task Scheduler
+### Option 3: Windows Task Scheduler
 
 1. Open Task Scheduler
 2. Create Basic Task
