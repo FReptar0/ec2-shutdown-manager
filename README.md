@@ -132,6 +132,7 @@ aws iam put-user-policy --user-name ec2-shutdown-manager \
 See `iam-policy-strict.json` - Only allows stopping specific instances:
 
 **Before using:**
+
 1. Edit `iam-policy-strict.json`
 2. Replace `123456789012` with your AWS Account ID
 3. Replace instance IDs with your actual instances
@@ -144,6 +145,7 @@ aws iam put-user-policy --user-name ec2-shutdown-manager \
 ```
 
 **Key security features:**
+
 - ✅ Can only stop specific instances (by ARN)
 - ✅ Can only operate in specified region
 - ✅ Cannot terminate instances (explicit deny)
