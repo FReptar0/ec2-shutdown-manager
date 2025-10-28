@@ -46,6 +46,7 @@ async function getInstanceDetails(instanceIds) {
           id: instance.InstanceId,
           state: instance.State.Name,
           name: instance.Tags?.find(tag => tag.Key === 'Name')?.Value || 'N/A',
+          ip: instance.PublicIpAddress || instance.PrivateIpAddress || 'N/A',
         });
       });
     });
@@ -74,14 +75,14 @@ async function checkStatus(instanceIds) {
   }
 
   console.log('Instance Status:');
-  console.log('─'.repeat(75));
-  console.log(`${'INSTANCE ID'.padEnd(22)} | ${'NAME'.padEnd(27)} | STATUS`);
-  console.log('─'.repeat(75));
+  console.log('─'.repeat(100));
+  console.log(`${'INSTANCE ID'.padEnd(22)} | ${'NAME'.padEnd(27)} | ${'IP ADDRESS'.padEnd(15)} | STATUS`);
+  console.log('─'.repeat(100));
 
   instances.forEach(instance => {
-    console.log(`${instance.id.padEnd(22)} | ${instance.name.padEnd(27)} | ${instance.state}`);
+    console.log(`${instance.id.padEnd(22)} | ${instance.name.padEnd(27)} | ${instance.ip.padEnd(15)} | ${instance.state}`);
   });
-  console.log('─'.repeat(75));
+  console.log('─'.repeat(100));
 }
 
 async function stopInstances(instanceIds) {
